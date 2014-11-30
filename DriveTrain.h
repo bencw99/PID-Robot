@@ -2,7 +2,8 @@
 #define DRIVETRAIN_H
 #include <WPILib.h>
 
-class Drivetrain{
+class DriveTrain
+{
   public:
   
   private:
