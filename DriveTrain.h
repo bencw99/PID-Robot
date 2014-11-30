@@ -5,7 +5,28 @@
 class DriveTrain
 {
 	private:
-  
-	public:
+  		double moveSpeed;
+  		double rotateSpeed;
+  		
+  		Victor leftFrontVic;
+  		Victor leftBackVic;
+  		Victor rightFrontVic;
+  		Victor rightBackVic;
+  		
+  	public:
+		DriveTrain();
+		
+		double getMoveSpeed();
+		double getRotateSpeed();
+		
+		void setMoveSpeed(double moveSpeed);
+		void setRotateSpeed(double rotateSpeed);
+		
+		void update();
+		
+		void stop();
+		
+		void disable();
+		
 };
 #endif
