@@ -4,8 +4,8 @@
 
 class DriveTrain
 {
-  public:
+	private:
   
-  private:
+	public:
 };
 #endif
