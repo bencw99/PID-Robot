@@ -9,9 +9,10 @@ class HumanController
 {
 	private:
   	
-  		Joystick rotationController;//x value controller
-  		Joystick movementController;//y value controller
- 
+  		/** The controller determining rotation, measured by x **/
+  		Joystick rotationController;
+  		/** The controller determining movement, measured by y **/
+  		Joystick movementController;
   		
   		double rotationControllerVal;//left right value of x value
   		double movementControllerVal;//up down value of y value
