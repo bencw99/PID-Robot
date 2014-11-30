@@ -24,7 +24,7 @@ class DriveTrain
 		
 		void update();
 		
-		void stop();
+		void setAllVics(double speed);
 		
 		void disable();
 		
