@@ -8,23 +8,20 @@
 class HumanController
 {
 	private:
-  	
+  		Robot *robot;
+  		
   		/** The controller determining rotation, measured by x **/
   		Joystick rotationController;
   		/** The controller determining movement, measured by y **/
   		Joystick movementController;
   		
-  		double rotationControllerVal;//left right value of x value
-  		double movementControllerVal;//up down value of y value
+  		double getRotation();
+		double getMovement();
   		
 	public:
 		
-		HumanController HumanController;
-		
-		double getRotationVal();
-		double getMovementVal();
+		HumanController(Robot *robot);
 	
 		void update();
-		
 };
 #endif
