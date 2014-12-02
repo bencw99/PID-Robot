@@ -21,6 +21,6 @@ double HumanController::getMovement()
 
 void HumanController::update()
 {
-	robot->getDriveTrain().setMovement(this->getMovement());
-	robot->getDriveTrain().setRotation(this->getRotation());
+	robot->setMoveSpeed(this->getMovement());
+	robot->setRotateSpeed(this->getRotation());
 }

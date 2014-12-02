@@ -16,7 +16,12 @@ void Robot::disable()
 	driveTrain.disable();
 }
 
-DriveTrain Robot::getDriveTrain()
+void Robot::setMoveSpeed(double moveSpeed)
 {
-	return driveTrain;
+	driveTrain.setMoveSpeed(moveSpeed);
+}
+
+void Robot::setRotateSpeed(double rotateSpeed)
+{
+	driveTrain.setRotateSpeed(rotateSpeed);
 }

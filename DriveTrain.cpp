@@ -2,7 +2,7 @@
 #include "Constants.h"
 #include <WPILib.h>
 
-DriveTrain::DriveTrain()
+DriveTrain::DriveTrain():
 	leftFrontVic((uint32_t) PORT_DRIVE_VIC_LEFT_FRONT),
 	leftBackVic((uint32_t) PORT_DRIVE_VIC_LEFT_BACK),
 	rightBackVic((uint32_t) PORT_DRIVE_VIC_RIGHT_BACK),
@@ -36,18 +36,18 @@ void DriveTrain::update()
 	double leftSpeed = min(max(moveSpeed - rotateSpeed, -1), 1);
 	double rightSpeed = min(max(moveSpeed + rotateSpeed, -1), 1);
 	
-	backLeftVic.Set(-leftSpeed);
-	frontLeftVic.Set(-leftSpeed);
-	backRightVic.Set(rightSpeed);
-	frontRightVic.Set(rightSpeed);
+	leftBackVic.Set(-leftSpeed);
+	leftFrontVic.Set(-leftSpeed);
+	rightBackVic.Set(rightSpeed);
+	rightFrontVic.Set(rightSpeed);
 }
 
-void setAllVics(double speed)
+void DriveTrain::setAllVics(double speed)
 {
-	leftBackVic.Set(speed);
-	leftFrontVic.Set(speed);
-	rightBackVic.Set(-speed);
-	rightFrontVic.Set(-speed);
+	leftBackVic.Set(-speed);
+	leftFrontVic.Set(-speed);
+	rightBackVic.Set(speed);
+	rightFrontVic.Set(speed);
 }
 
 void DriveTrain::disable()

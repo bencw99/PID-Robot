@@ -14,7 +14,8 @@ class Robot
 		void update();
 		void disable();
 		
-		DriveTrain getDriveTrain();
+		void setMoveSpeed(double moveSpeed);
+		void setRotateSpeed(double rotateSpeed);
 };
 
 #endif

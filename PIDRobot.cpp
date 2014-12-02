@@ -1,4 +1,6 @@
 #include <WPILib.h>
+#include "Robot.h"
+#include "HumanController.h"
 
 class PIDRobot : public IterativeRobot
 {
@@ -7,7 +9,7 @@ class PIDRobot : public IterativeRobot
 		HumanController humanController;
 		
 	public:
-		EBBot();
+		PIDRobot();
 		void RobotInit();
 		void AutonomousInit();
 		void AutonomousPeriodic();
