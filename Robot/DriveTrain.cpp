@@ -6,9 +6,14 @@ DriveTrain::DriveTrain():
 	leftFrontVic((uint32_t) PORT_DRIVE_VIC_LEFT_FRONT),
 	leftBackVic((uint32_t) PORT_DRIVE_VIC_LEFT_BACK),
 	rightBackVic((uint32_t) PORT_DRIVE_VIC_RIGHT_BACK),
-	rightFrontVic((uint32_t) PORT_DRIVE_VIC_RIGHT_FRONT)
+	rightFrontVic((uint32_t) PORT_DRIVE_VIC_RIGHT_FRONT),
+	
+	leftEncoder((uint32_t) PORT_ENCODER_LEFT_A, (uint32_t) PORT_ENCODER_LEFT_B, true),
+	rightEncoder((uint32_t) PORT_ENCODER_RIGHT_A, (uint32_t) PORT_ENCODER_RIGHT_B, false)
 {
 	setAllVics(0.0);
+	
+	
 }
 
 double DriveTrain::getMoveSpeed()
