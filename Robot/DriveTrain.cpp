@@ -13,7 +13,8 @@ DriveTrain::DriveTrain():
 {
 	setAllVics(0.0);
 	
-	
+	leftEncoder.start();
+	rightEncoder.start();
 }
 
 double DriveTrain::getMoveSpeed()
@@ -45,6 +46,9 @@ void DriveTrain::update()
 	leftFrontVic.Set(-leftSpeed);
 	rightBackVic.Set(rightSpeed);
 	rightFrontVic.Set(rightSpeed);
+	
+	cout<< "Left Encoder Value: " + leftEncoder.get() << endl;
+	cout<< "Right Encoder Value: " + rightEncoder.get() << endl;
 }
 
 void DriveTrain::setAllVics(double speed)
