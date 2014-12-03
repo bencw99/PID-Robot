@@ -15,6 +15,9 @@ class DriveTrain
   		Victor rightFrontVic;
   		Victor rightBackVic;
   		
+  		Encoder leftEncoder;
+  		Encoder rightEncoder;
+  		
   	public:
 		DriveTrain();
 		
