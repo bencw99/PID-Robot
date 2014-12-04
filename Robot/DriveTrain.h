@@ -27,10 +27,10 @@ class DriveTrain
 		void setMoveSpeed(double moveSpeed);
 		void setRotateSpeed(double rotateSpeed);
 		
-		void update();
-		
 		void setAllVics(double speed);
 		
+		void init();
+		void update();
 		void disable();
 		
 };
