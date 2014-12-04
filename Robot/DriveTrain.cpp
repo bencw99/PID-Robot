@@ -18,6 +18,9 @@ DriveTrain::DriveTrain():
 	
 	leftEncoder.Start();
 	rightEncoder.Start();
+	
+	cout << leftEncoder.PIDGet() << endl;
+	cout << rightEncoder.PIDGet() << endl;
 }
 
 double DriveTrain::getMoveSpeed()
