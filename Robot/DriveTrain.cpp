@@ -40,6 +40,25 @@ void DriveTrain::setRotateSpeed(double rotateSpeed)
 	this->rotateSpeed = rotateSpeed;
 }
 
+void DriveTrain::setAllVics(double speed)
+{
+	leftBackVic.Set(-speed);
+	leftFrontVic.Set(-speed);
+	rightBackVic.Set(speed);
+	rightFrontVic.Set(speed);
+}
+
+void DriveTrain::init()
+{
+	leftEncoder.Reset();
+	rightEncoder.Reset();
+	
+	leftEncoder.Start();
+	rightEncoder.Start();
+	
+	setAllVics(0);
+}
+
 void DriveTrain::update()
 {
 	double leftSpeed = min(max(moveSpeed - rotateSpeed, -1), 1);
@@ -52,14 +71,6 @@ void DriveTrain::update()
 	
 	cout<< "Left Encoder Value: " + leftEncoder.Get() << endl;
 	cout<< "Right Encoder Value: " + rightEncoder.Get() << endl;
-}
-
-void DriveTrain::setAllVics(double speed)
-{
-	leftBackVic.Set(-speed);
-	leftFrontVic.Set(-speed);
-	rightBackVic.Set(speed);
-	rightFrontVic.Set(speed);
 }
 
 void DriveTrain::disable()
