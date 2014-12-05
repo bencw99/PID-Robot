@@ -9,7 +9,12 @@ DriveTrain::DriveTrain():
 	rightFrontVic((uint32_t) PORT_DRIVE_VIC_RIGHT_FRONT),
 	
 	leftEncoder((uint32_t) PORT_ENCODER_LEFT_A, (uint32_t) PORT_ENCODER_LEFT_B, true),
-	rightEncoder((uint32_t) PORT_ENCODER_RIGHT_A, (uint32_t) PORT_ENCODER_RIGHT_B, false)
+	rightEncoder((uint32_t) PORT_ENCODER_RIGHT_A, (uint32_t) PORT_ENCODER_RIGHT_B, false),
+	
+	leftFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, %leftFrontVic);
+	leftBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, %leftBackVic);
+	rightFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, %rightFrontVic);
+	rightBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, %rightBackVic);
 {
 	setAllVics(0.0);
 	
@@ -18,7 +23,6 @@ DriveTrain::DriveTrain():
 	
 	leftEncoder.Start();
 	rightEncoder.Start();
-
 }
 
 double DriveTrain::getMoveSpeed()
