@@ -15,6 +15,11 @@ class DriveTrain
   		Victor rightFrontVic;
   		Victor rightBackVic;
   		
+  		PIDController leftFrontController;
+		PIDController leftBackController;
+		PIDController rightFrontController;
+		PIDController rightBackController;
+  		
   		Encoder leftEncoder;
   		Encoder rightEncoder;
   		
