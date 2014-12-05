@@ -18,9 +18,7 @@ DriveTrain::DriveTrain():
 	
 	leftEncoder.Start();
 	rightEncoder.Start();
-	
-	cout << leftEncoder.PIDGet() << endl;
-	cout << rightEncoder.PIDGet() << endl;
+
 }
 
 double DriveTrain::getMoveSpeed()
@@ -74,6 +72,10 @@ void DriveTrain::update()
 	
 	cout<< "Left Encoder Value: " + leftEncoder.Get() << endl;
 	cout<< "Right Encoder Value: " + rightEncoder.Get() << endl;
+	
+		
+	cout << leftEncoder.GetDistance() << endl;
+	cout << rightEncoder.GetDistance() << endl;
 }
 
 void DriveTrain::disable()
