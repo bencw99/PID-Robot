@@ -11,15 +11,15 @@ DriveTrain::DriveTrain():
 	leftEncoder((uint32_t) PORT_ENCODER_LEFT_A, (uint32_t) PORT_ENCODER_LEFT_B, true),
 	rightEncoder((uint32_t) PORT_ENCODER_RIGHT_A, (uint32_t) PORT_ENCODER_RIGHT_B, false),
 	
-	leftFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, %leftFrontVic);
-	leftBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, %leftBackVic);
-	rightFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, %rightFrontVic);
-	rightBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, %rightBackVic);
+	leftFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, %leftFrontVic);//we only need left and right
+	leftBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, %leftBackVic);//cus is there a case that u can think of
+	rightFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, %rightFrontVic);//wen the leftFront and leftBack move at different rates
+	rightBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, %rightBackVic);//i think
 {
 	setAllVics(0.0);
 	
-	leftEncoder.SetDistancePerPulse(0.01);
-	rightEncoder.SetDistancePerPulse(0.01);
+	leftEncoder.SetDistancePerPulse(1);
+	rightEncoder.SetDistancePerPulse(1);
 	
 	leftEncoder.Start();
 	rightEncoder.Start();
@@ -78,8 +78,8 @@ void DriveTrain::update()
 	cout<< "Right Encoder Value: " + rightEncoder.Get() << endl;
 	
 		
-	cout << leftEncoder.GetDistance() << endl;
-	cout << rightEncoder.GetDistance() << endl;
+	cout << leftEncoder.Get() << endl;
+	cout << rightEncoder.Get() << endl;
 }
 
 void DriveTrain::disable()
