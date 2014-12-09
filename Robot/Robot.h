@@ -11,6 +11,7 @@ class Robot
 		
 	public:
 		Robot();
+		void init();
 		void update();
 		void disable();
 		

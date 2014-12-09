@@ -6,6 +6,11 @@ Robot::Robot():
 	
 }
 
+void Robot::init()
+{
+	driveTrain.init();
+}
+
 void Robot::update()
 {
 	driveTrain.update();
@@ -14,6 +19,7 @@ void Robot::update()
 void Robot::disable()
 {
 	driveTrain.disable();
+	
 }
 
 void Robot::setMoveSpeed(double moveSpeed)

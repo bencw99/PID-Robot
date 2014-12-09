@@ -32,12 +32,12 @@ PIDRobot::PIDRobot():
 
 void PIDRobot::RobotInit()
 {
-	
+	robot.init();
 }
 
 void PIDRobot::AutonomousInit()
 {
-	
+	robot.init();
 }
 
 void PIDRobot::AutonomousPeriodic()
@@ -63,7 +63,7 @@ void PIDRobot::DisabledPeriodic()
 
 void PIDRobot::TeleopInit()
 {
-	
+	robot.init();
 }
 
 void PIDRobot::TeleopPeriodic()

@@ -15,4 +15,4 @@
 #define INTEGRAL 0.0
 #define DERIVATIVE 0.1
 
-#define DISTANCE_PER_ROT 6*atan(1)*4
+#define DISTANCE_PER_ROT 2*atan(1)*4

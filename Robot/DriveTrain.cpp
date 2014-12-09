@@ -11,10 +11,10 @@ DriveTrain::DriveTrain():
 	leftEncoder((uint32_t) PORT_ENCODER_LEFT_A, (uint32_t) PORT_ENCODER_LEFT_B, true),
 	rightEncoder((uint32_t) PORT_ENCODER_RIGHT_A, (uint32_t) PORT_ENCODER_RIGHT_B, false),
 	
-	leftFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, %leftFrontVic);//we only need left and right
-	leftBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, %leftBackVic);//cus is there a case that u can think of
-	rightFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, %rightFrontVic);//wen the leftFront and leftBack move at different rates
-	rightBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, %rightBackVic);//i think
+	leftFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, &leftFrontVic),
+	leftBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, &leftBackVic),
+	rightFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, &rightFrontVic),
+	rightBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, &rightBackVic)
 {
 	setAllVics(0.0);
 	
@@ -74,16 +74,39 @@ void DriveTrain::update()
 	rightBackVic.Set(rightSpeed);
 	rightFrontVic.Set(rightSpeed);
 	
-	cout<< "Left Encoder Value: " + leftEncoder.Get() << endl;
-	cout<< "Right Encoder Value: " + rightEncoder.Get() << endl;
+	cout << "Left Encoder Value: " + leftEncoder.Get() << endl;
+	cout << "Right Encoder Value: " + rightEncoder.Get() << endl;
+
+	if(leftEncoder.Get() >= 1227)
+	{
+		leftBackVic.Set(0);
+		leftFrontVic.Set(0);
+		rightBackVic.Set(0);
+		rightFrontVic.Set(0);
+	}
 	
-		
-	cout << leftEncoder.Get() << endl;
-	cout << rightEncoder.Get() << endl;
+	if(rightEncoder.Get() >= 190)
+			{
+				leftBackVic.Set(0);
+				leftFrontVic.Set(0);
+				rightBackVic.Set(0);
+				rightFrontVic.Set(0);
+			}
+	
+	if(leftEncoder.Get() != 0)
+		{
+			cout << "Left Encoder Value: " << leftEncoder.GetDistance() << endl;
+		}
+	if(rightEncoder.Get() != 0)
+		{
+			cout << "Right Encoder Value: " << rightEncoder.GetDistance() << endl;
+		}
 }
 
 void DriveTrain::disable()
 {
 	setAllVics(0);
+	leftEncoder.Reset();
+	rightEncoder.Reset();
 }
 
