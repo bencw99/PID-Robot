@@ -18,8 +18,8 @@ DriveTrain::DriveTrain():
 {
 	setAllVics(0.0);
 	
-	leftEncoder.SetDistancePerPulse(1);
-	rightEncoder.SetDistancePerPulse(1);
+	leftEncoder.SetDistancePerPulse(DISTANCE_PER_ROT/PULSE_PER_ROT);
+	rightEncoder.SetDistancePerPulse(DISTANCE_PER_ROT/PULSE_PER_ROT);
 	
 	leftEncoder.Start();
 	rightEncoder.Start();
