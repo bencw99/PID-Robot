@@ -1,6 +1,7 @@
 #include "DriveTrain.h"
 #include "Constants.h"
 #include <WPILib.h>
+using namespace std;
 
 DriveTrain::DriveTrain():
 	leftFrontVic((uint32_t) PORT_DRIVE_VIC_LEFT_FRONT),
@@ -66,16 +67,16 @@ void DriveTrain::init()
 
 void DriveTrain::update()
 {
-	double leftSpeed = min(max(moveSpeed - rotateSpeed, -1), 1);
-	double rightSpeed = min(max(moveSpeed + rotateSpeed, -1), 1);
+	double leftSpeed = min(max(moveSpeed - rotateSpeed, -1.0), 1.0);
+	double rightSpeed = min(max(moveSpeed + rotateSpeed, -1.0), 1.0);
 	
 	leftBackVic.Set(-leftSpeed);
 	leftFrontVic.Set(-leftSpeed);
 	rightBackVic.Set(rightSpeed);
 	rightFrontVic.Set(rightSpeed);
 	
-	cout << "Left Encoder Value: " + leftEncoder.Get() << endl;
-	cout << "Right Encoder Value: " + rightEncoder.Get() << endl;
+	cout << "Left Encoder Value: " + leftEncoder.Get() << "\n";
+	cout << "Right Encoder Value: " + rightEncoder.Get() << "\n";
 
 	if(leftEncoder.Get() >= 1227)
 	{
