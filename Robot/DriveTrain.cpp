@@ -63,6 +63,35 @@ void DriveTrain::init()
 	rightEncoder.Start();
 	
 	setAllVics(0);
+
+	leftFrontController.Enable();
+	rightFrontController.Enable();
+	leftBackController.Enable();
+	rightBackController.Enable();
+
+	void leftFrontController::SetInputRange
+	(
+	float 	-1,
+	float 	1
+	)
+
+	void rightFrontController::SetInputRange
+	(
+	float 	-1,
+	float 	1
+	)
+
+	void leftBackController::SetInputRange
+	(
+	float 	-1,
+	float 	1
+	)
+
+	void rightBackController::SetInputRange
+	(
+	float 	-1,
+	float 	1
+	)
 }
 
 void DriveTrain::update()
@@ -75,8 +104,14 @@ void DriveTrain::update()
 	rightBackVic.Set(rightSpeed);
 	rightFrontVic.Set(rightSpeed);
 	
-	cout << "Left Encoder Value: " + leftEncoder.Get() << "\n";
-	cout << "Right Encoder Value: " + rightEncoder.Get() << "\n";
+	//cout << "Left Encoder Value: " + leftEncoder.Get() << "\n";
+	//cout << "Right Encoder Value: " + rightEncoder.Get() << "\n";
+
+	cout << "leftFrontController:" + leftFrontController.Get() << endl;
+	cout << "rightFrontController:" + rightFrontController.Get() << endl;
+	cout << "leftBackController:" + leftBackController.Get() << endl;
+	cout << "rightBackController:" + rightBackController.Get() << endl;
+
 
 	if(leftEncoder.Get() >= 1227)
 	{
@@ -109,5 +144,10 @@ void DriveTrain::disable()
 	setAllVics(0);
 	leftEncoder.Reset();
 	rightEncoder.Reset();
+
+	leftFrontController.Disable();
+	rightFrontController.Disable();
+	leftBackController.Disable();
+	rightBackController.Disable();
 }
 
