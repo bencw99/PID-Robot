@@ -48,14 +48,16 @@ void DriveTrain::setRotateSpeed(double rotateSpeed)
 	this->rotateSpeed = rotateSpeed;
 }
 
-void DriveTrain::setAllVics(double speed) {
+void DriveTrain::setAllVics(double speed)
+{
 	leftBackVic.Set(-speed);
 	leftFrontVic.Set(-speed);
 	rightBackVic.Set(speed);
 	rightFrontVic.Set(speed);
 }
 
-void DriveTrain::init() {
+void DriveTrain::init()
+{
 	leftEncoder.Reset();
 	rightEncoder.Reset();
 	
