@@ -121,6 +121,11 @@ void DriveTrain::update()
 	//	{
 	//		cout << "Right Encoder Value: " << rightEncoder.GetDistance() << endl;
 	//	}
+	
+	leftFrontController.SetSetPoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
+	leftBackController.SetSetPoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
+	rightFrontController.SetSetPoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
+	rightBackController.SetSetPoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
 }
 
 void DriveTrain::disable()
