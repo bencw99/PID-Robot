@@ -11,9 +11,8 @@
 #define PORT_ENCODER_LEFT_A 5
 #define PORT_ENCODER_LEFT_B 6
 
-#define DISTANCE_PER_ROT 2*atan(1)*4
-#define PULSE_PER_ROT 120
-
 #define PROPORTIONAL 0.1
 #define INTEGRAL 0.0
 #define DERIVATIVE 0.1
+
+#define DISTANCE_PER_ROT 2*atan(1)*4
