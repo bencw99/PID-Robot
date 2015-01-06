@@ -12,18 +12,18 @@ DriveTrain::DriveTrain():
 	leftEncoder((uint32_t) PORT_ENCODER_LEFT_A, (uint32_t) PORT_ENCODER_LEFT_B, true),
 	rightEncoder((uint32_t) PORT_ENCODER_RIGHT_A, (uint32_t) PORT_ENCODER_RIGHT_B, false),
 	
-	leftFrontController(0.1, 0.00, 0.1, &leftEncoder, &leftFrontVic),
-	leftBackController(0.1, 0.00, 0.1, &leftEncoder, &leftBackVic),
-	rightFrontController(0.1, 0.00, 0.1, &rightEncoder, &rightFrontVic),
-	rightBackController(0.1, 0.00, 0.1, &rightEncoder, &rightBackVic)
+	leftFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, &leftFrontVic),
+	leftBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, &leftBackVic),
+	rightFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, &rightFrontVic),
+	rightBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, &rightBackVic)
 	{
-	setAllVics(0.0);
-	
-	leftEncoder.SetDistancePerPulse(0.0815);
-	rightEncoder.SetDistancePerPulse(0.5279);
-	
-	leftEncoder.Start();
-	rightEncoder.Start();
+		setAllVics(0.0);
+
+		leftEncoder.SetDistancePerPulse(0.0815);
+		rightEncoder.SetDistancePerPulse(0.5279);
+
+		leftEncoder.Start();
+		rightEncoder.Start();
 	}
 
 
@@ -122,10 +122,10 @@ void DriveTrain::update()
 	//		cout << "Right Encoder Value: " << rightEncoder.GetDistance() << endl;
 	//	}
 	
-	leftFrontController.SetSetPoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
-	leftBackController.SetSetPoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
-	rightFrontController.SetSetPoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
-	rightBackController.SetSetPoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
+	leftFrontController.SetSetpoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
+	leftBackController.SetSetpoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
+	rightFrontController.SetSetpoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
+	rightBackController.SetSetpoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
 }
 
 void DriveTrain::disable()
