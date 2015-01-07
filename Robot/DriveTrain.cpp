@@ -72,11 +72,8 @@ void DriveTrain::init()
 	rightBackController.Enable();
 
 	leftFrontController.SetInputRange(-1, 1);
-
 	rightFrontController.SetInputRange(-1,1);
-
 	leftBackController.SetInputRange(-1,1);
-
 	rightBackController.SetInputRange(-1,1);
 }
 
@@ -97,7 +94,6 @@ void DriveTrain::update()
 	cout << (double)rightFrontController.Get() << endl;
 	cout << (double)leftBackController.Get() << endl;
 	cout << (double)rightBackController.Get() << endl;
-
 
 	//if(leftEncoder.Get() >= 1227)
 	//{
@@ -128,6 +124,25 @@ void DriveTrain::update()
 	leftBackController.SetSetpoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
 	rightFrontController.SetSetpoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
 	rightBackController.SetSetpoint(min(max(moveSpeed - rotateSpeed, -1.0), 1.0));
+
+	if(leftEncoder.Get() != 0)
+	{
+		cout << "Left Encoder Value: " << leftEncoder.GetDistance() << endl;
+	}
+	if(rightEncoder.Get() != 0)
+	{
+		cout << "Right Encoder Value: " << rightEncoder.GetDistance() << endl;
+	}
+	
+//	leftFrontController.SetSetpoint(3*(moveSpeed - rotateSpeed));
+//	leftBackController.SetSetpoint(3*(moveSpeed - rotateSpeed));
+//	rightFrontController.SetSetpoint(0.3*(moveSpeed - rotateSpeed));
+//	rightBackController.SetSetpoint(0.3*(moveSpeed - rotateSpeed));
+	
+	leftFrontController.SetSetpoint(100);
+	leftBackController.SetSetpoint(100);
+	rightFrontController.SetSetpoint(100);
+	rightBackController.SetSetpoint(100);
 }
 
 void DriveTrain::disable()
