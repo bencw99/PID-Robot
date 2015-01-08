@@ -18,4 +18,6 @@
 #define LEFT_DPP 0.0815
 #define RIGHT_DPP 0.5279
 
+#define TIME_CONSTANT = 0.1;
+
 #define DISTANCE_PER_ROT 2*atan(1)*4
