@@ -66,10 +66,10 @@ void DriveTrain::init()
 	
 	setAllVics(0);
 
-//	leftFrontController.Enable();
-//	rightFrontController.Enable();
-//	leftBackController.Enable();
-//	rightBackController.Enable();
+	leftFrontController.Enable();
+	rightFrontController.Enable();
+	leftBackController.Enable();
+	rightBackController.Enable();
 
 	leftFrontController.SetInputRange(-1, 1);
 	rightFrontController.SetInputRange(-1,1);
