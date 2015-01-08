@@ -66,10 +66,10 @@ void DriveTrain::init()
 	
 	setAllVics(0);
 
-	leftFrontController.Enable();
-	rightFrontController.Enable();
-	leftBackController.Enable();
-	rightBackController.Enable();
+//	leftFrontController.Enable();
+//	rightFrontController.Enable();
+//	leftBackController.Enable();
+//	rightBackController.Enable();
 
 	leftFrontController.SetInputRange(-1, 1);
 	rightFrontController.SetInputRange(-1,1);
@@ -86,31 +86,12 @@ void DriveTrain::update()
 	leftFrontVic.Set(-leftSpeed);
 	rightBackVic.Set(rightSpeed);
 	rightFrontVic.Set(rightSpeed);
-	
-	//cout << "Left Encoder Value: " + leftEncoder.Get() << "\n";
-	//cout << "Right Encoder Value: " + rightEncoder.Get() << "\n";
 
-	// cout << (double)leftFrontController.Get() << endl;
-	// cout << (double)rightFrontController.Get() << endl;
-	// cout << (double)leftBackController.Get() << endl;
-	// cout << (double)rightBackController.Get() << endl;
+	leftFrontController.SetSetpoint(leftEncoder.GetDistance() + leftSpeed);
+	leftBackController.SetSetpoint(leftEncoder.GetDistance() + leftSpeed);
+	rightFrontController.SetSetpoint(rightEncoder.GetDistance() + rightSpeed);
+	rightBackController.SetSetpoint(rightEncoder.GetDistance() + rightSpeed);
 	
-	//if(leftEncoder.Get() != 0)
-	//	{
-	//		cout << "Left Encoder Value: " << leftEncoder.GetDistance() << endl;
-	//	}
-	//if(rightEncoder.Get() != 0)
-	//	{
-	//		cout << "Right Encoder Value: " << rightEncoder.GetDistance() << endl;
-	//	}
-	
-	
-	
-	leftFrontController.SetSetpoint(leftEncoder.GetDistance() + TIME_CONSTANT*leftSpeed);
-	leftBackController.SetSetpoint(leftEncoder.GetDistance() + TIME_CONSTANT*leftSpeed);
-	rightFrontController.SetSetpoint(rightEncoder.GetDistance() + TIME_CONSTANT*rightSpeed);
-	rightBackController.SetSetpoint(rightEncoder.GetDistance() + TIME_CONSTANT*rightSpeed);
-
 	if(leftEncoder.Get() != 0)
 	{
 		cout << "Left Encoder Value: " << leftEncoder.GetDistance() << endl;
