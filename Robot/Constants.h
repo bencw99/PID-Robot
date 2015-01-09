@@ -15,8 +15,7 @@
 #define INTEGRAL 0.5
 #define DERIVATIVE 0.5
 
-#define LEFT_DPP 0.0815
-#define RIGHT_DPP 0.5279
+#define DPP 0.0815
 
 #define TIME_CONSTANT = 0.1;
 
