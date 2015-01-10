@@ -11,9 +11,14 @@
 #define PORT_ENCODER_LEFT_A 5
 #define PORT_ENCODER_LEFT_B 6
 
-#define PROPORTIONAL 0.5
-#define INTEGRAL 0.5
-#define DERIVATIVE 0.5
+/** PID values currently arbitrarily assigned. Better values determined through testing **/
+
+/** The proportional constant used in PID control **/
+#define PROPORTIONAL 0.1
+/** The integral constant used in PID control **/
+#define INTEGRAL 0.1
+/** The derivative constant used in PID control **/
+#define DERIVATIVE 0.1
 
 #define DPP 0.0815
 
