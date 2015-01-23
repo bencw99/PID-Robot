@@ -20,7 +20,8 @@
 /** The derivative constant used in PID control **/
 #define DERIVATIVE 0.1
 
-#define DPP 0.0815
+#define LEFT_DPP 0.08220549667
+#define RIGHT_DPP 0.07995890167
 
 #define TIME_CONSTANT = 0.1;
 

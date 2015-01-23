@@ -20,8 +20,8 @@ DriveTrain::DriveTrain():
 		setAllVics(0.0);
 
 		/** Sets the encoder distance per pulse **/
-		leftEncoder.SetDistancePerPulse(DPP);
-		rightEncoder.SetDistancePerPulse(DPP);
+		leftEncoder.SetDistancePerPulse(LEFT_DPP);
+		rightEncoder.SetDistancePerPulse(RIGHT_DPP);
 
 		/** Starts encoders **/
 		leftEncoder.Start();
@@ -66,10 +66,10 @@ void DriveTrain::init()
 	
 	setAllVics(0);
 
-	leftFrontController.Enable();
-	rightFrontController.Enable();
-	leftBackController.Enable();
-	rightBackController.Enable();
+//	leftFrontController.Enable();
+//	rightFrontController.Enable();
+//	leftBackController.Enable();
+//	rightBackController.Enable();
 
 	leftFrontController.SetInputRange(-1, 1);
 	rightFrontController.SetInputRange(-1,1);
@@ -89,10 +89,10 @@ void DriveTrain::update()
 	rightFrontVic.Set(rightSpeed);
 	
 	/** Sets the PID controller setpoint to the current location plus a constant times the target speed **/
-	leftFrontController.SetSetpoint(leftEncoder.GetDistance() + 1*leftSpeed);
-	leftBackController.SetSetpoint(leftEncoder.GetDistance() + 1*leftSpeed);
-	rightFrontController.SetSetpoint(rightEncoder.GetDistance() + 1*rightSpeed);
-	rightBackController.SetSetpoint(rightEncoder.GetDistance() + 1*rightSpeed);
+//	leftFrontController.SetSetpoint(leftEncoder.GetDistance() + 1*leftSpeed);
+//	leftBackController.SetSetpoint(leftEncoder.GetDistance() + 1*leftSpeed);
+//	rightFrontController.SetSetpoint(rightEncoder.GetDistance() + 1*rightSpeed);
+//	rightBackController.SetSetpoint(rightEncoder.GetDistance() + 1*rightSpeed);
 	
 	if(leftEncoder.Get() != 0)
 	{
