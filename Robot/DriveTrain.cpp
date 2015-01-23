@@ -28,6 +28,68 @@ DriveTrain::DriveTrain():
 		rightEncoder.Start();
 	}
 
+void DriveTrain::init()
+{
+	leftEncoder.Reset();
+	rightEncoder.Reset();
+	
+	leftEncoder.Start();
+	rightEncoder.Start();
+	
+	setAllVics(0);
+
+	leftFrontController.SetInputRange(-1, 1);
+	rightFrontController.SetInputRange(-1,1);
+	leftBackController.SetInputRange(-1,1);
+	rightBackController.SetInputRange(-1,1);
+}
+
+void DriveTrain::update()
+{
+	double leftSpeed = min(max(moveSpeed - rotateSpeed, -1.0), 1.0);
+	double rightSpeed = min(max(moveSpeed + rotateSpeed, -1.0), 1.0);
+	
+	if(leftFrontController.isEnabled() || leftBackController.isEnabled() || rightFrontController.isEnabled() || rightBackController.isEnabled())
+	{
+		
+	}
+	else
+	{
+		/** Sets victors to target speed **/
+		leftBackVic.Set(-leftSpeed);
+		leftFrontVic.Set(-leftSpeed);
+		rightBackVic.Set(rightSpeed);
+		rightFrontVic.Set(rightSpeed);
+	}
+	
+	/** Sets the PID controller setpoint to the current location plus a constant times the target speed **/
+//	leftFrontController.SetSetpoint(leftEncoder.GetDistance() + 1*leftSpeed);
+//	leftBackController.SetSetpoint(leftEncoder.GetDistance() + 1*leftSpeed);
+//	rightFrontController.SetSetpoint(rightEncoder.GetDistance() + 1*rightSpeed);
+//	rightBackController.SetSetpoint(rightEncoder.GetDistance() + 1*rightSpeed);
+	
+	if(leftEncoder.Get() != 0)
+	{
+		cout << "Left Encoder Value: " << leftEncoder.GetDistance() << endl;
+	}
+	if(rightEncoder.Get() != 0)
+	{
+		cout << "Right Encoder Value: " << rightEncoder.GetDistance() << endl;
+	}
+}
+
+void DriveTrain::disable()
+{
+	setAllVics(0);
+	leftEncoder.Reset();
+	rightEncoder.Reset();
+
+	leftFrontController.Disable();
+	rightFrontController.Disable();
+	leftBackController.Disable();
+	rightBackController.Disable();
+}
+
 double DriveTrain::getMoveSpeed()
 {
 	return moveSpeed;
@@ -56,7 +118,7 @@ void DriveTrain::setAllVics(double speed)
 	rightFrontVic.Set(speed);
 }
 
-void DriveTrain::init()
+void DriveTrain::driveDistance(double distance)
 {
 	leftEncoder.Reset();
 	rightEncoder.Reset();
@@ -64,54 +126,13 @@ void DriveTrain::init()
 	leftEncoder.Start();
 	rightEncoder.Start();
 	
-	setAllVics(0);
-
-//	leftFrontController.Enable();
-//	rightFrontController.Enable();
-//	leftBackController.Enable();
-//	rightBackController.Enable();
-
-	leftFrontController.SetInputRange(-1, 1);
-	rightFrontController.SetInputRange(-1,1);
-	leftBackController.SetInputRange(-1,1);
-	rightBackController.SetInputRange(-1,1);
-}
-
-void DriveTrain::update()
-{
-	double leftSpeed = min(max(moveSpeed - rotateSpeed, -1.0), 1.0);
-	double rightSpeed = min(max(moveSpeed + rotateSpeed, -1.0), 1.0);
+	leftFrontController.SetSetpoint(distance);
+	rightFrontController.SetSetpoint(distance);
+	leftBackController.SetSetpoint(distance);
+	rightBackController.SetSetpoint(distance);
 	
-	/** Sets victors to target speed **/
-	leftBackVic.Set(-leftSpeed);
-	leftFrontVic.Set(-leftSpeed);
-	rightBackVic.Set(rightSpeed);
-	rightFrontVic.Set(rightSpeed);
-	
-	/** Sets the PID controller setpoint to the current location plus a constant times the target speed **/
-//	leftFrontController.SetSetpoint(leftEncoder.GetDistance() + 1*leftSpeed);
-//	leftBackController.SetSetpoint(leftEncoder.GetDistance() + 1*leftSpeed);
-//	rightFrontController.SetSetpoint(rightEncoder.GetDistance() + 1*rightSpeed);
-//	rightBackController.SetSetpoint(rightEncoder.GetDistance() + 1*rightSpeed);
-	
-	if(leftEncoder.Get() != 0)
-	{
-		cout << "Left Encoder Value: " << leftEncoder.GetDistance() << endl;
-	}
-	if(rightEncoder.Get() != 0)
-	{
-		cout << "Right Encoder Value: " << rightEncoder.GetDistance() << endl;
-	}
-}
-
-void DriveTrain::disable()
-{
-	setAllVics(0);
-	leftEncoder.Reset();
-	rightEncoder.Reset();
-
-	leftFrontController.Disable();
-	rightFrontController.Disable();
-	leftBackController.Disable();
-	rightBackController.Disable();
+	leftFrontController.Enable();
+	rightFrontController.Enable();
+	leftBackController.Enable();
+	rightBackController.Enable();
 }
