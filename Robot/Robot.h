@@ -15,6 +15,7 @@ class Robot
 		void update();
 		void disable();
 		
+		void driveDistance(double distance);
 		void setMoveSpeed(double moveSpeed);
 		void setRotateSpeed(double rotateSpeed);
 };

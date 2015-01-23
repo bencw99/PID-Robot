@@ -49,7 +49,7 @@ void DriveTrain::update()
 	double leftSpeed = min(max(moveSpeed - rotateSpeed, -1.0), 1.0);
 	double rightSpeed = min(max(moveSpeed + rotateSpeed, -1.0), 1.0);
 	
-	if(leftFrontController.isEnabled() || leftBackController.isEnabled() || rightFrontController.isEnabled() || rightBackController.isEnabled())
+	if(leftFrontController.IsEnabled() || leftBackController.IsEnabled() || rightFrontController.IsEnabled() || rightBackController.IsEnabled())
 	{
 		cout <<  leftFrontController.GetError() << endl;
 		cout <<  leftBackController.GetError() << endl;

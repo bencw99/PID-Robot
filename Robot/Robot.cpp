@@ -22,6 +22,11 @@ void Robot::disable()
 	
 }
 
+void Robot::driveDistance(double distance)
+{
+	driveTrain.driveDistance(distance);
+}
+
 void Robot::setMoveSpeed(double moveSpeed)
 {
 	driveTrain.setMoveSpeed(moveSpeed);
