@@ -51,7 +51,10 @@ void DriveTrain::update()
 	
 	if(leftFrontController.isEnabled() || leftBackController.isEnabled() || rightFrontController.isEnabled() || rightBackController.isEnabled())
 	{
-		
+		cout <<  leftFrontController.GetError() << endl;
+		cout <<  leftBackController.GetError() << endl;
+		cout <<  rightFrontController.GetError() << endl;
+		cout <<  rightBackController.GetError() << endl;
 	}
 	else
 	{
