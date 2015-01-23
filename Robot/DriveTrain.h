@@ -26,6 +26,10 @@ class DriveTrain
   	public:
 		DriveTrain();
 		
+		void init();
+		void update();
+		void disable();
+		
 		double getMoveSpeed();
 		double getRotateSpeed();
 		
@@ -34,9 +38,6 @@ class DriveTrain
 		
 		void setAllVics(double speed);
 		
-		void init();
-		void update();
-		void disable();
-		
+		void driveDistance(double distance);
 };
 #endif
