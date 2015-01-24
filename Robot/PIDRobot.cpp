@@ -7,7 +7,7 @@ class PIDRobot : public IterativeRobot
 	private:
 		Robot robot;
 		HumanController humanController;
-
+		
 	public:
 		PIDRobot();
 		void RobotInit();
@@ -27,7 +27,7 @@ PIDRobot::PIDRobot():
 	robot(),
 	humanController(&robot)
 {
-
+	
 }
 
 void PIDRobot::RobotInit()
@@ -47,7 +47,7 @@ void PIDRobot::AutonomousPeriodic()
 
 void PIDRobot::AutonomousDisabled()
 {
-
+	
 }
 
 void PIDRobot::DisabledInit()
@@ -81,10 +81,10 @@ void PIDRobot::TeleopDisabled()
 
 void PIDRobot::TestInit()
 {
-
+	
 }
 void PIDRobot::TestPeriodic()
 {
-
+	
 }
 START_ROBOT_CLASS(PIDRobot);
