@@ -12,10 +12,10 @@ DriveTrain::DriveTrain():
 	leftEncoder((uint32_t) PORT_ENCODER_LEFT_A, (uint32_t) PORT_ENCODER_LEFT_B, true),
 	rightEncoder((uint32_t) PORT_ENCODER_RIGHT_A, (uint32_t) PORT_ENCODER_RIGHT_B, false),
 	
-	leftFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, &leftFrontVic),
-	leftBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &leftEncoder, &leftBackVic),
-	rightFrontController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, &rightFrontVic),
-	rightBackController(PROPORTIONAL, INTEGRAL, DERIVATIVE, &rightEncoder, &rightBackVic)
+	leftFrontController(LEFT_PROPORTIONAL, LEFT_INTEGRAL, LEFT_DERIVATIVE, &leftEncoder, &leftFrontVic),
+	leftBackController(LEFT_PROPORTIONAL, LEFT_INTEGRAL, LEFT_DERIVATIVE, &leftEncoder, &leftBackVic),
+	rightFrontController(RIGHT_PROPORTIONAL, RIGHT_INTEGRAL, RIGHT_DERIVATIVE, &rightEncoder, &rightFrontVic),
+	rightBackController(RIGHT_PROPORTIONAL, RIGHT_INTEGRAL, RIGHT_DERIVATIVE, &rightEncoder, &rightBackVic)
 	{
 		setAllVics(0.0);
 
@@ -38,10 +38,10 @@ void DriveTrain::init()
 	
 	setAllVics(0);
 
-	leftFrontController.SetInputRange(-1, 1);
-	rightFrontController.SetInputRange(-1,1);
-	leftBackController.SetInputRange(-1,1);
-	rightBackController.SetInputRange(-1,1);
+	leftFrontController.SetInputRange(-999, 999);
+	rightFrontController.SetInputRange(-999, 999);
+	leftBackController.SetInputRange(-999, 999);
+	rightBackController.SetInputRange(-999, 999);
 }
 
 void DriveTrain::update()
@@ -51,10 +51,11 @@ void DriveTrain::update()
 	
 	if(leftFrontController.IsEnabled() || leftBackController.IsEnabled() || rightFrontController.IsEnabled() || rightBackController.IsEnabled())
 	{
-		cout <<  leftFrontController.GetError() << endl;
-		cout <<  leftBackController.GetError() << endl;
-		cout <<  rightFrontController.GetError() << endl;
-		cout <<  rightBackController.GetError() << endl;
+		cout << "Left Error: " << leftFrontController.GetError() << endl;
+		cout << "Left  Error: " <<  leftBackController.GetError() << endl;
+		cout << "Right Error: " << rightFrontController.GetError() << endl;
+		cout << "Right Error: " << rightBackController.GetError() << endl;
+		
 	}
 	else
 	{
@@ -63,6 +64,7 @@ void DriveTrain::update()
 		leftFrontVic.Set(-leftSpeed);
 		rightBackVic.Set(rightSpeed);
 		rightFrontVic.Set(rightSpeed);
+	
 	}
 	
 	/** Sets the PID controller setpoint to the current location plus a constant times the target speed **/
@@ -71,14 +73,14 @@ void DriveTrain::update()
 //	rightFrontController.SetSetpoint(rightEncoder.GetDistance() + 1*rightSpeed);
 //	rightBackController.SetSetpoint(rightEncoder.GetDistance() + 1*rightSpeed);
 	
-	if(leftEncoder.Get() != 0)
-	{
-		cout << "Left Encoder Value: " << leftEncoder.GetDistance() << endl;
-	}
-	if(rightEncoder.Get() != 0)
-	{
-		cout << "Right Encoder Value: " << rightEncoder.GetDistance() << endl;
-	}
+//	if(leftEncoder.Get() != 0)
+//	{
+//		cout << "Left Encoder Value: " << leftEncoder.GetDistance() << endl;
+//	}
+//	if(rightEncoder.Get() != 0)
+//	{
+//		cout << "Right Encoder Value: " << rightEncoder.GetDistance() << endl;
+//	}
 }
 
 void DriveTrain::disable()
@@ -115,10 +117,10 @@ void DriveTrain::setRotateSpeed(double rotateSpeed)
 
 void DriveTrain::setAllVics(double speed)
 {
-	leftBackVic.Set(-speed);
-	leftFrontVic.Set(-speed);
-	rightBackVic.Set(speed);
-	rightFrontVic.Set(speed);
+	leftBackVic.Set(speed);
+	leftFrontVic.Set(speed);
+	rightBackVic.Set(-speed);
+	rightFrontVic.Set(-speed);
 }
 
 void DriveTrain::driveDistance(double distance)
@@ -129,13 +131,15 @@ void DriveTrain::driveDistance(double distance)
 	leftEncoder.Start();
 	rightEncoder.Start();
 	
+	leftFrontController.Enable();
+	leftBackController.Enable();
+	rightFrontController.Enable();
+	rightBackController.Enable();
+	
 	leftFrontController.SetSetpoint(distance);
-	rightFrontController.SetSetpoint(distance);
 	leftBackController.SetSetpoint(distance);
+	rightFrontController.SetSetpoint(distance);
 	rightBackController.SetSetpoint(distance);
 	
-	leftFrontController.Enable();
-	rightFrontController.Enable();
-	leftBackController.Enable();
-	rightBackController.Enable();
+	
 }

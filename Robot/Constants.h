@@ -13,15 +13,32 @@
 
 /** PID values currently arbitrarily assigned. Better values determined through testing **/
 
-/** The proportional constant used in PID control **/
-#define PROPORTIONAL 0.1
-/** The integral constant used in PID control **/
-#define INTEGRAL 0.1
-/** The derivative constant used in PID control **/
-#define DERIVATIVE 0.1
+///** The left proportional constant used in PID control **/
+//#define LEFT_PROPORTIONAL 0.1
+///** The left integral constant used in PID control **/
+//#define LEFT_INTEGRAL 0.0
+///** The left derivative constant used in PID control **/
+//#define LEFT_DERIVATIVE 0.1
 
-#define LEFT_DPP 0.08220549667
-#define RIGHT_DPP 0.07995890167
+///** The right proportional constant used in PID control **/
+//#define RIGHT_PROPORTIONAL -0.1
+///** The right integral constant used in PID control **/
+//#define RIGHT_INTEGRAL -0.0
+///** The right derivative constant used in PID control **/
+//#define RIGHT_DERIVATIVE -0.1
+
+#define LEFT_PROPORTIONAL .12
+#define LEFT_INTEGRAL 0
+#define LEFT_DERIVATIVE .45
+
+#define RIGHT_PROPORTIONAL -.12
+#define RIGHT_INTEGRAL -0
+#define RIGHT_DERIVATIVE -.45
+
+
+#define RIGHT_DPP 0.08038585
+#define LEFT_DPP 0.08163265
+
 
 #define TIME_CONSTANT = 0.1;
 

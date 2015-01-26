@@ -64,7 +64,7 @@ void PIDRobot::DisabledPeriodic()
 void PIDRobot::TeleopInit()
 {
 	robot.init();
-	robot.driveDistance(50);
+	robot.driveDistance(150);
 }
 
 void PIDRobot::TeleopPeriodic()
