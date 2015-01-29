@@ -38,10 +38,10 @@ void DriveTrain::init()
 	
 	setAllVics(0);
 
-	leftFrontController.SetInputRange(-999, 999);
-	rightFrontController.SetInputRange(-999, 999);
-	leftBackController.SetInputRange(-999, 999);
-	rightBackController.SetInputRange(-999, 999);
+	leftFrontController.SetInputRange(-9999, 9999);
+	rightFrontController.SetInputRange(-9999, 9999);
+	leftBackController.SetInputRange(-9999, 9999);
+	rightBackController.SetInputRange(-9999, 9999);
 }
 
 void DriveTrain::update()
@@ -54,8 +54,7 @@ void DriveTrain::update()
 		cout << "Left Error: " << leftFrontController.GetError() << endl;
 		cout << "Left  Error: " <<  leftBackController.GetError() << endl;
 		cout << "Right Error: " << rightFrontController.GetError() << endl;
-		cout << "Right Error: " << rightBackController.GetError() << endl;
-		
+		cout << "Right Error: " << rightBackController.GetError() << endl;	
 	}
 	else
 	{
@@ -64,22 +63,21 @@ void DriveTrain::update()
 		leftFrontVic.Set(-leftSpeed);
 		rightBackVic.Set(rightSpeed);
 		rightFrontVic.Set(rightSpeed);
-	
 	}
 	
 	/** Sets the PID controller setpoint to the current location plus a constant times the target speed **/
-//	leftFrontController.SetSetpoint(leftEncoder.GetDistance() + 1*leftSpeed);
-//	leftBackController.SetSetpoint(leftEncoder.GetDistance() + 1*leftSpeed);
-//	rightFrontController.SetSetpoint(rightEncoder.GetDistance() + 1*rightSpeed);
-//	rightBackController.SetSetpoint(rightEncoder.GetDistance() + 1*rightSpeed);
+	leftFrontController.SetSetpoint(leftEncoder.GetDistance() - 50*leftSpeed);
+	leftBackController.SetSetpoint(leftEncoder.GetDistance() - 50*leftSpeed);
+	rightFrontController.SetSetpoint(rightEncoder.GetDistance() -50*rightSpeed);
+	rightBackController.SetSetpoint(rightEncoder.GetDistance() - 50*rightSpeed);
 	
 //	if(leftEncoder.Get() != 0)
 //	{
-//		cout << "Left Encoder Value: " << leftEncoder.GetDistance() << endl;
+//		cout << "Left Encoder Value: " << leftEncoder.Get() << endl;
 //	}
 //	if(rightEncoder.Get() != 0)
 //	{
-//		cout << "Right Encoder Value: " << rightEncoder.GetDistance() << endl;
+//		cout << "Right Encoder Value: " << rightEncoder.Get() << endl;
 //	}
 }
 
