@@ -16,13 +16,15 @@ class HumanController
   		/** The controller determining movement, measured by y **/
   		Joystick movementController;
   		
-  		double getRotation();
-		double getMovement();
+  		
   		
 	public:
 		
 		HumanController(Robot *robot);
 	
+		double getRotation();
+		double getMovement();
+		
 		void update();
 };
 #endif
