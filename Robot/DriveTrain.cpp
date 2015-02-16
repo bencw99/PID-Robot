@@ -38,10 +38,10 @@ void DriveTrain::init()
 	
 	setAllVics(0);
 
-	leftFrontController.SetInputRange(-1, 1);
-	rightFrontController.SetInputRange(-1,1);
-	leftBackController.SetInputRange(-1,1);
-	rightBackController.SetInputRange(-1,1);
+	leftFrontController.SetInputRange(-999, 999);
+	rightFrontController.SetInputRange(-999, 999);
+	leftBackController.SetInputRange(-999, 999);
+	rightBackController.SetInputRange(-999, 999);
 }
 
 void DriveTrain::update()
@@ -63,6 +63,7 @@ void DriveTrain::update()
 		leftFrontVic.Set(-leftSpeed);
 		rightBackVic.Set(rightSpeed);
 		rightFrontVic.Set(rightSpeed);
+		std::cout << "this is the newest thingy" << std::endl;
 	}
 	
 	/** Sets the PID controller setpoint to the current location plus a constant times the target speed **/
