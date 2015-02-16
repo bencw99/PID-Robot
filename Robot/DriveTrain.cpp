@@ -23,19 +23,13 @@ DriveTrain::DriveTrain():
 		leftEncoder.SetDistancePerPulse(LEFT_DPP);
 		rightEncoder.SetDistancePerPulse(RIGHT_DPP);
 
-		/** Starts encoders **/
-		leftEncoder.Start();
-		rightEncoder.Start();
 	}
 
 void DriveTrain::init()
 {
 	leftEncoder.Reset();
 	rightEncoder.Reset();
-	
-	leftEncoder.Start();
-	rightEncoder.Start();
-	
+
 	setAllVics(0);
 
 
@@ -127,10 +121,7 @@ void DriveTrain::driveDistance(double distance)
 {
 	leftEncoder.Reset();
 	rightEncoder.Reset();
-	
-	leftEncoder.Start();
-	rightEncoder.Start();
-	
+
 	leftFrontController.Enable();
 	leftBackController.Enable();
 	rightFrontController.Enable();

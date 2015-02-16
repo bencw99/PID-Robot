@@ -10,10 +10,10 @@ class DriveTrain
   		double moveSpeed;
   		double rotateSpeed;
   		
-  		Victor leftFrontVic;
-  		Victor leftBackVic;
-  		Victor rightFrontVic;
-  		Victor rightBackVic;
+  		Talon leftFrontVic;
+  		Talon leftBackVic;
+  		Talon rightFrontVic;
+  		Talon rightBackVic;
   		
   		PIDController leftFrontController;
 		PIDController leftBackController;
